@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfwwdob810qc3"]
+
+[ext_resource type="Texture2D" uid="uid://bw6oo5smkhocj" path="res://Assets/basictiles.png" id="1_d5w63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch405"]
+size = Vector2(16, 16)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+angular_damp = 24.088
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ch405")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d5w63")
+hframes = 8
+vframes = 15
+frame = 54

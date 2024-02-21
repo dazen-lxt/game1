@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=3 uid="uid://11g07a20ss1g"]
+
+[ext_resource type="Texture2D" uid="uid://bj60eua3yc1e4" path="res://Assets/characters.png" id="1_08ifc"]
+[ext_resource type="Script" path="res://player.gd" id="1_tki4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmqvv"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpqd3"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02smw"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nrt6"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24v6j"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbfwf"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elpvh"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns07v"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ftj"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfkp2"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbq0b"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqiou"]
+atlas = ExtResource("1_08ifc")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_legx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmqvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpqd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02smw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpqd3")
+}],
+"loop": false,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nrt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24v6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbfwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24v6j")
+}],
+"loop": false,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elpvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns07v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6ftj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns07v")
+}],
+"loop": false,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfkp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbq0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqiou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbq0b")
+}],
+"loop": false,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq0v1"]
+size = Vector2(10, 5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_tki4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_08ifc")
+hframes = 12
+vframes = 8
+frame = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_legx0")
+animation = &"walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_kq0v1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.36
+drag_top_margin = 0.36
+drag_right_margin = 0.37
+drag_bottom_margin = 0.38
+editor_draw_drag_margin = true
